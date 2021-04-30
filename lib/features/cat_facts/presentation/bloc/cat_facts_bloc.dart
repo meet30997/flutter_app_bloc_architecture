@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app_bloc_architecure/core/error/failures.dart';
 import 'package:flutter_app_bloc_architecure/features/cat_facts/domain/usecases/get_cat_facts_usecase.dart';
 import 'package:flutter_app_bloc_architecure/features/cat_facts/presentation/bloc/cat_facts_bloc_events.dart';
 import 'package:flutter_app_bloc_architecure/features/cat_facts/presentation/bloc/cat_facts_bloc_states.dart';
@@ -16,7 +15,7 @@ class CatFactsBloc extends Bloc<GetCatFactsEvent, GetCatFactsState> {
       yield Loading();
       final result = await getCatFactsUseCase();
       yield result.fold(
-          (failure) => Error(message: mapFailureToMessage(failure)),
+          (repositoryException) => Error(message: repositoryException.message),
           (catFacts) => Loaded(catFacts: catFacts));
     }
   }

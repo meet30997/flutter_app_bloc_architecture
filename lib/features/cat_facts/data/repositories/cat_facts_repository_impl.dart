@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app_bloc_architecure/core/error/failures.dart';
+import 'package:flutter_app_bloc_architecure/core/error/repository_exception.dart';
 import 'package:flutter_app_bloc_architecure/core/platform/network_info.dart';
 import 'package:flutter_app_bloc_architecure/core/repository/repository_util.dart';
 import 'package:flutter_app_bloc_architecure/features/cat_facts/data/datasources/cat_facts_remote_data_source_contract.dart';
@@ -15,7 +15,8 @@ class CatFactsRepositoryImpl implements CatFactsRepositoryContract {
       {@required this.remoteDataSource, @required this.networkInfo});
 
   @override
-  Future<Either<Failure, List<CatFactsEntity>>> getCatFacts() async {
+  Future<Either<RepositoryException, List<CatFactsEntity>>>
+      getCatFacts() async {
     return repositoryImplUtil<List<CatFactsEntity>>(
         networkInfo, remoteDataSource.getCatFacts());
   }

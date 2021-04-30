@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_app_bloc_architecure/core/error/failures.dart';
+import 'package:flutter_app_bloc_architecure/core/error/repository_exception.dart';
 
 abstract class UseCaseBaseContract<Type> {
-  Future<Either<Failure, Type>> call();
+  Future<Either<RepositoryException, Type>> call();
 }
