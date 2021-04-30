@@ -56,4 +56,10 @@ class _CatFactsPageState extends State<CatFactsPage> {
   void _dispatchApiCall() {
     _catFactsBloc.add(GetCatFactsDataEvent());
   }
+
+  @override
+  void dispose() {
+    _catFactsBloc.close();
+    super.dispose();
+  }
 }
